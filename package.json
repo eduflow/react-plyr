@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "npm run clean && babel src --out-dir lib --ignore test.js,setupTests.js",
+    "prepare": "npm run clean && babel src --out-dir lib --ignore test.js,setupTests.js",
     "clean": "rimraf lib",
     "test": "jest && npm run test:lint",
     "test:coverage": "jest --coverage",
