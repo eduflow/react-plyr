@@ -213,6 +213,16 @@ class Plyr extends Component {
     if (prevProps.muted !== this.props.muted) {
       this.player.muted = this.props.muted;
     }
+
+    if (this.player && this.props.videoId && this.props.videoId !== prevProps.videoId) {
+      this.player.source = {
+        type: 'video',
+        sources: [{
+          provider: this.props.type,
+          src: this.props.videoId,
+        }],
+      };
+    }
   }
 
   componentWillUnmount() {
