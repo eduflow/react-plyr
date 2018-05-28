@@ -325,12 +325,14 @@ class Plyr extends Component {
   // For video support for plyr supported videos using videoId (Youtube and Vimeo for now).
   renderPlayerWithVideoId = () => {
     return (
-      <div
-        data-plyr-provider={this.props.provider}
-        data-plyr-embed-id={this.props.videoId}
-        ref={this.elementRef}
-        {...pick(this.props, this.restProps)}
-      />
+      <div>
+        <div
+          data-plyr-provider={this.props.provider}
+          data-plyr-embed-id={this.props.videoId}
+          ref={this.elementRef}
+          {...pick(this.props, this.restProps)}
+        />
+      </div>
     );
   };
 
@@ -365,35 +367,39 @@ class Plyr extends Component {
 
     if (sources && Array.isArray(sources) && sources.length) {
       return (
+        <div>
+          <video
+            src={url}
+            preload={preload}
+            poster={poster}
+            ref={this.elementRef}
+            {...pick(rest, this.restProps)}
+          >
+            {sources.map((source, index) =>
+              <source
+                key={index}
+                src={source.src}
+                type={source.type}
+                size={source.size && source.size}
+              />
+            )}
+          </video>
+        </div>
+      );
+    }
+
+    return (
+      <div>
         <video
+          src={url}
           preload={preload}
           poster={poster}
           ref={this.elementRef}
           {...pick(rest, this.restProps)}
         >
-          {sources.map((source, index) => (
-            <source
-              key={index}
-              src={source.src}
-              type={source.type}
-              size={source.size && source.size}
-            />
-          ))}
           {captionsMap}
         </video>
-      );
-    }
-
-    return (
-      <video
-        src={url}
-        preload={preload}
-        poster={poster}
-        ref={this.elementRef}
-        {...pick(rest, this.restProps)}
-      >
-        {captionsMap}
-      </video>
+      </div>
     );
   };
 
@@ -402,21 +408,25 @@ class Plyr extends Component {
 
     if (sources && Array.isArray(sources) && sources.length) {
       return (
-        <audio preload={preload} ref={this.elementRef} {...rest}>
-          {sources.map((source, index) => (
-            <source key={index} src={source.src} type={source.type} />
-          ))}
-        </audio>
+        <div>
+          <audio preload={preload} ref={this.elementRef} {...rest}>
+            {sources.map((source, index) => (
+              <source key={index} src={source.src} type={source.type} />
+            ))}
+          </audio>
+        </div>
       );
     }
 
     return (
-      <audio
-        preload={preload}
-        src={url}
-        ref={this.elementRef}
-        {...pick(rest, this.restProps)}
-      />
+      <div>
+        <audio
+          preload={preload}
+          src={url}
+          ref={this.elementRef}
+          {...pick(rest, this.restProps)}
+        />
+      </div>
     );
   };
 
