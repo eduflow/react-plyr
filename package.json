@@ -1,10 +1,10 @@
 {
-  "name": "react-plyr",
+  "name": "@peergrade/react-plyr",
   "version": "2.1.0-alpha.0",
   "description": "A simple, accessible HTML5 media player React Component",
-  "homepage": "https://github.com/xDae/react-plyr",
+  "homepage": "https://github.com/peergradeio/react-plyr",
   "bugs": {
-    "url": "https://github.com/xDae/react-plyr/issues"
+    "url": "https://github.com/peergradeio/react-plyr/issues"
   },
   "license": "MIT",
   "author": "Jose Miguel Bejarano",
@@ -14,7 +14,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xDae/react-plyr.git"
+    "url": "https://github.com/peergradeio/react-plyr.git"
   },
   "scripts": {
     "build": "npm run clean && babel src --out-dir lib --ignore test.js,setupTests.js",
